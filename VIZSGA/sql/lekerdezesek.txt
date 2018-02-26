@@ -1,0 +1,23 @@
+a)
+SELECT house, COUNT(id) AS "Élõ karakterek száma"
+FROM characters 
+WHERE house <> "" AND dead = 0 AND organization = ""
+GROUP BY house
+
+b)
+SELECT * 
+FROM `characters` 
+WHERE dead = 0 AND bio LIKE "%hero%"
+
+c)
+SELECT * 
+FROM `characters` 
+WHERE dead = 0 AND house = "" AND organization LIKE "%nightwatch"
+
+d)
+SELECT name AS "Hero", alias AS "Nick Name", house AS "Big House" 
+FROM `characters` 
+WHERE dead = 0 
+AND house NOT LIKE "%Lannister"
+AND organization NOT LIKE "%royalguard"
+AND (bio NOT LIKE "%Lannister%" OR bio NOT LIKE "%King's Landing%")
