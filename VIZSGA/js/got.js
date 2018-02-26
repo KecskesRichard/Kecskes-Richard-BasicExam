@@ -23,6 +23,9 @@ function successAjax(xhttp) {
       Ha valemelyik függvényeteknek kell, akkor paraméterként adjátok át.
     */
     createTable(userDatas);
+    document.getElementById("searchInput").addEventListener("search", function () {
+        searchInput(userDatas);
+    });
 }
 
 // Írd be a json fileod nevét/útvonalát úgy, ahogy nálad van
@@ -36,10 +39,35 @@ function createTable(userDatas) {
     for (var i in userDatas) {
         if (userDatas[i].dead === "0") {
             div += `<div class='pic'>
-            <img id="pic${i}" src=${userDatas[i].portrait}>
+            <img id="pic${i}" src=${userDatas[i].portrait} alt=${userDatas[i].name} onclick="function() {pictureClick(userDatas)}">
             <p> ${userDatas[i].name} </p>
             </div>`
         }
     }
     document.getElementById("table").innerHTML = div;
+}
+
+function pictureClick(userDatas) {
+
+}
+
+function searchInput(userDatas) {
+    var searchExp = document.getElementById("searchInput").value;
+    searchExp = searchExp.toLowerCase();
+    document.querySelector(".bigpic").innerHTML = "";
+    document.querySelector(".name").innerHTML = "";
+    /* document.querySelector(".icon").innerHTML = ""; */
+    document.querySelector(".bio").innerHTML = "";
+
+    for (var k in userDatas) {
+        if (userDatas[k].name.indexOf(searchExp) >= 0) {
+            document.querySelector(".bigpic").innerHTML = `<img id="bigpic" src="${userDatas[k].picture} alt="${userDatas[k].name}>`;
+            document.querySelector(".name").innerHTML = `<p id="name">${userDatas[k].name}</p>`;
+            /* document.querySelector(".icon").innerHTML = `<img id="icon" src="${userDatas[k].` */
+            document.querySelector(".bio").innerHTML = `<p id="bio">${userDatas[k].bio}</p>`;
+            break;
+        } else {
+            document.querySelector(".name").innerHTML = `<p id="name">Character not found</p>`
+        }
+    }
 }

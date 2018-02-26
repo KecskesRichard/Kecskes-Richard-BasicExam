@@ -35,15 +35,65 @@ body {
 
 .sidesearch {
     position: relative;
-    background: grey;
+    background: rgb(71, 71, 71);
     height: 993px;
     width: 20%;
     float: right;
     color: white;
     text-align: center;
+    display: block;
 }
 
 .title {
     padding-top: 3%;
     font-size: 40px;
+}
+
+#btn {
+    position: absolute;
+    float: left;
+    height: 5%;
+    width: 12%;
+    bottom: 2%;
+    left: 6%;
+    border-radius: 5px;
+    background: rgb(71, 71, 71);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    color: white;
+    font-size: 30px;
+}
+
+#btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0 10px white;
+}
+
+#searchInput {
+    position: absolute;
+    float: right;
+    box-sizing: border-box;
+    height: 5%;
+    width: 70%;
+    bottom: 2%;
+    right: 4%;
+    border-radius: 5px;
+    font-size: 19px;
+    border: none;
+}
+
+/* innentől szerettem volna formázni a searchInput() által generált dolgokat, de valamiért a generálás sem ment
+valószínűleg a keresési feltételemmel volt baja
+#bigpic {
+    position: absolute;
+    float: left;
+    width: 80%;
+    left: 6%;
+}
+*/
+
+#name {
+    position: absolute;
+    font-size: 25px;
+    left: 6%;
+    top: 35%;
 }
