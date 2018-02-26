@@ -22,10 +22,24 @@ function successAjax(xhttp) {
       A userDatas NEM GLOBÁLIS változó, ne is tegyétek ki globálisra. Azaz TILOS!
       Ha valemelyik függvényeteknek kell, akkor paraméterként adjátok át.
     */
+    createTable(userDatas);
 }
 
 // Írd be a json fileod nevét/útvonalát úgy, ahogy nálad van
-getData('/json/aJsonFileodNeve.json', successAjax);
+getData('json/characters.json', successAjax);
 
 // Live servert használd mindig!!!!!
 /* IDE ÍRD A FÜGGVÉNYEKET!!!!!! NE EBBE AZ EGY SORBA HANEM INNEN LEFELÉ! */
+
+function createTable(userDatas) {
+    var div = "";
+    for (var i in userDatas) {
+        if (userDatas[i].dead === "0") {
+            div += `<div class='pic'>
+            <img id="pic${i}" src=${userDatas[i].portrait}>
+            <p> ${userDatas[i].name} </p>
+            </div>`
+        }
+    }
+    document.getElementById("table").innerHTML = div;
+}
